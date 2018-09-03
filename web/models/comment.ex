@@ -1,10 +1,12 @@
 defmodule Discuss.Comment do
   use Discuss.Web, :model
 
+  @derive {Poison.Encoder, only: [:content]}
+
   schema "comments" do
-    field: :content, :string
+    field :content, :string
     belongs_to :user, Discuss.User
-    belonts_to :topic, Discuss.Topic
+    belongs_to :topic, Discuss.Topic
     
     timestamps()
   end
